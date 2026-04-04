@@ -65,8 +65,56 @@ commands = [
         "name": "cool",
         "description": "Says if a user is cool. Use subcommand 'bot' to check if the bot is cool.",
         "usage": ".cool [subcommand]"
-    }
+    },
+    {
+        "name": "ping",
+        "description": "Responds with 'Pong!' to test if the bot is responsive.",
+        "usage": ".ping"
+    },
+    {
+        "name": "echo",
+        "description": "Echoes the user's message back to them.",
+        "usage": ".echo <message>"
+    },
+    {
+        "name": "roll",
+        "description": "Rolls a dice in NdN format.",
+        "usage": ".roll <NdN>"
+    },
+    {
+        "name": "repeat",
+        "description": "Repeats a message multiple times.",
+        "usage": ".repeat <times> [content]"
+    },
 ]
+
+@bot.command()
+async def ping(ctx):
+    """Responds with 'Pong!' to test if the bot is responsive."""
+    await ctx.send('Pong!')
+
+@bot.command()
+async def echo(ctx, *, message: str):
+    """Echoes the user's message back to them."""
+    await ctx.send(message)
+
+@bot.command()
+async def roll(ctx, dice: str):
+    """Rolls a dice in NdN format."""
+    try:
+        rolls, limit = map(int, dice.split('d'))
+    except Exception:
+        await ctx.send('Format has to be in NdN!')
+        return
+
+    result = ', '.join(str(random.randint(1, limit)) for _ in range(rolls))
+    await ctx.send(result)
+
+@bot.command()
+async def repeat(ctx, times: int, *, content: str):
+    """Repeats a message multiple times."""
+    for _ in range(times):
+        await ctx.send(content)
 
 @bot.command()
 async def potatobothelp(ctx):
