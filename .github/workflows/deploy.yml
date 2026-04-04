@@ -1,0 +1,38 @@
+name: Deploy Potatobot
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build image
+        run: |
+          docker build --no-cache -t potatobot:v3 .
+
+      - name: Save image
+        run: |
+          docker save potatobot:v3 -o potatobot-v3.tar
+
+      - name: Import into K3s
+        run: |
+          sudo k3s ctr images import potatobot-v3.tar
+
+      - name: Update deployment image
+        run: |
+          kubectl set image deployment/potatobot potatobot=potatobot:v3 -n apps
+
+      - name: Restart deployment
+        run: |
+          kubectl rollout restart deployment/potatobot -n apps
+
+      - name: Verify rollout
+        run: |
+          kubectl rollout status deployment/potatobot -n apps
