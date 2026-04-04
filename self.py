@@ -69,7 +69,7 @@ commands = [
 ]
 
 @bot.command()
-async def help(ctx):
+async def potatobothelp(ctx):
     """Displays a list of available commands and their descriptions."""
     help_message = "Here are the available commands:\n\n"
     for cmd in commands:
