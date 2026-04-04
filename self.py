@@ -80,12 +80,7 @@ commands = [
         "name": "roll",
         "description": "Rolls a dice in NdN format.",
         "usage": ".roll <NdN>"
-    },
-    {
-        "name": "repeat",
-        "description": "Repeats a message multiple times.",
-        "usage": ".repeat <times> [content]"
-    },
+    }
 ]
 
 @bot.command()
@@ -110,11 +105,6 @@ async def roll(ctx, dice: str):
     result = ', '.join(str(random.randint(1, limit)) for _ in range(rolls))
     await ctx.send(result)
 
-@bot.command()
-async def repeat(ctx, times: int, *, content: str):
-    """Repeats a message multiple times."""
-    for _ in range(times):
-        await ctx.send(content)
 
 @bot.command()
 async def potatobothelp(ctx):
