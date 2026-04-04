@@ -22,6 +22,8 @@ async def on_ready():
     print('---------------------------')
     print(f'Logged in as {bot.user} (ID: {bot.user.id})')
     print('---------------------------')
+    channel = bot.get_channel(1486218054265213029)  # channel ID
+    await channel.send('PotatoBot is  online and ready to serve you!')
 
 
 #-------COMMANDS---------
@@ -128,6 +130,7 @@ async def on_message(message):
     locked_channels.add(channel.id)
 
     try:
+        await channel.send("[testing]A Pokémon has spawned! You have 30 seconds to catch it!")
         everyone_overwrite = channel.overwrites_for(everyone)
         old_everyone_send = everyone_overwrite.send_messages
 
