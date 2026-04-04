@@ -28,6 +28,11 @@ async def on_ready():
 
 #-------COMMANDS---------
 @bot.command()
+async def version(ctx):
+    """Adds two numbers together."""
+    await ctx.send('PotatoBot version 4.3.2')
+
+@bot.command()
 async def add(ctx, left: int, right: int):
     """Adds two numbers together."""
     await ctx.send(left + right)
