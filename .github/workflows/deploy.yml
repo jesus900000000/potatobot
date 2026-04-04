@@ -27,12 +27,12 @@ jobs:
 
       - name: Update deployment image
         run: |
-          kubectl set image deployment/potatobot potatobot=potatobot:v3 -n apps
+          kubectl set image deployment/potatobot potatobot=potatobot:v3
 
       - name: Restart deployment
         run: |
-          kubectl rollout restart deployment/potatobot -n apps
+          kubectl rollout restart deployment/potatobot
 
       - name: Verify rollout
         run: |
-          kubectl rollout status deployment/potatobot -n apps
+          kubectl rollout status deployment/potatobot
