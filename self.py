@@ -32,9 +32,9 @@ async def on_ready():
 #-------COMMANDS------------
 commands = [
     {
-        "name": "version",
+        "name": "potatobotversion",
         "description": "Displays the current version of PotatoBot. Current version is " + version,
-        "usage": ".version"
+        "usage": ".potatobotversion"
     },
     {
         "name": "add",
