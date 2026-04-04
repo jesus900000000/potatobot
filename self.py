@@ -7,7 +7,7 @@ import time
 import asyncio
 
 #VERSION
-version = "4.3.3"
+version = "4.3.4"
 
 #1. Load token
 load_dotenv() 
@@ -29,11 +29,11 @@ async def on_ready():
     await channel.send('PotatoBot is online and ready to serve you!')
 
 
-#-------COMMANDS---------
+#-------COMMANDS------------
 commands = [
     {
         "name": "version",
-        "description": "Displays the current version of PotatoBot.",
+        "description": "Displays the current version of PotatoBot. Current version is " + version,
         "usage": ".version"
     },
     {
