@@ -128,7 +128,6 @@ async def on_message(message):
     locked_channels.add(channel.id)
 
     try:
-        await ctx.send(f"Locking {channel.name} for 30 seconds to allow mentions to catch up...")
         everyone_overwrite = channel.overwrites_for(everyone)
         old_everyone_send = everyone_overwrite.send_messages
 
