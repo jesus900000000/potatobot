@@ -7,7 +7,7 @@ import time
 import asyncio
 
 #VERSION
-version = "4.3.5"
+version = "4.3.6"
 
 #1. Load token
 load_dotenv() 
@@ -269,4 +269,4 @@ async def on_message(message):
     finally:
         locked_channels.discard(channel.id)
 
-bot.run(str(token))
+bot.run(str(''+ token))
